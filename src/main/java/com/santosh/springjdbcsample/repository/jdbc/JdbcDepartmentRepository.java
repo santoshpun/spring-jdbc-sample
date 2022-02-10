@@ -4,6 +4,7 @@ import com.santosh.springjdbcsample.model.Department;
 import com.santosh.springjdbcsample.repository.DepartmentRepository;
 import com.santosh.springjdbcsample.repository.rowmapper.DepartmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Repository
 public class JdbcDepartmentRepository implements DepartmentRepository {
     @Autowired
+    @Qualifier("slave")
     private JdbcTemplate jdbcTemplate;
 
     @Override
