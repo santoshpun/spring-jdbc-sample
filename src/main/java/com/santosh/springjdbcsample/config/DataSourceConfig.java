@@ -20,7 +20,7 @@ public class DataSourceConfig {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
         dataSource.setUrl(env.getProperty("jdbc.url"));
         dataSource.setUsername(env.getProperty("jdbc.username"));
@@ -31,7 +31,7 @@ public class DataSourceConfig {
 
     @Bean(name = "slave")
     public JdbcTemplate jdbcTemplate() {
-        JdbcTemplate template = new JdbcTemplate();
+        final JdbcTemplate template = new JdbcTemplate();
         template.setDataSource(dataSource());
         template.setQueryTimeout(20);
         return template;
